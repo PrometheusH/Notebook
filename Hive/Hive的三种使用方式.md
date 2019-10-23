@@ -7,18 +7,19 @@
 > 需要相应war包来进行安装
 
 3. **Thrift**
-> 主要解决问题：在代码中连接Hive
-只要程序中有客户端代码和正确的配置，可以连接到启动了HiveServer或HiveServer2的机器，从而对hive进行操作。
-因为HiveServer或HiveServer2都是基于Thrift的，所以也被成为Thrift方式。
-HiveServer与HiveServer2：HiveServer不能处理多于一个客户端的并发请求，这是由于HiveServer使用的Thrift接口所导致的限制，不能通过修改HiveServer的代码修正；因此在Hive-0.11.0中重写了HiveServer的代码得到了HiveServer2，解决了这个问题。HiveServer2支持多客户端的并发和认证，为`开放API客户端`如JDBC，ODBC提供了更好的支持。
+> - 主要解决问题：在代码中连接Hive
+- 只要程序中有客户端代码和正确的配置，可以连接到启动了HiveServer或HiveServer2的机器，从而对hive进行操作。
+- 因为HiveServer或HiveServer2都是基于Thrift的，所以也被成为Thrift方式。
+- HiveServer与HiveServer2：HiveServer不能处理多于一个客户端的并发请求，这是由于HiveServer使用的Thrift接口所导致的限制，不能通过修改HiveServer的代码修正；因此在Hive-0.11.0中重写了HiveServer的代码得到了HiveServer2，解决了这个问题。HiveServer2支持多客户端的并发和认证，为`开放API客户端`如JDBC，ODBC提供了更好的支持。
 
 
 #### jdbc远程连接HiveServer2
 > 启动源数据库：`hive --service metastore &`
-开启HiveServer2服务：`hive --server hiveserver2 &`
+开启HiveServer2服务：`hive --server hiveserver2 &` 
+
 api操作Hive：
 
-```
+```java
 package com.berg.hive.test1.api;
 
 import java.sql.Connection;
